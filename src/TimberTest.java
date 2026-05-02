@@ -29,7 +29,15 @@ public class TimberTest {
             System.out.println("\t________________________________");
 
             System.out.print("Enter your choice: ");
-            choice = in.nextInt();
+            String inputChoice = in.next();
+
+            if(check(inputChoice) == 0){
+                System.err.println("Input Error By User....");
+                System.err.println("Leaving System...");
+                return; 
+            }
+
+            choice = Integer.parseInt(inputChoice);
 
             switch (choice) {
                 case 1 -> timber.timberEntry();
@@ -60,6 +68,19 @@ public class TimberTest {
             chooseA = in.next().charAt(0);
             chooseA = Character.toUpperCase(chooseA);
 
-        } while (chooseA != 'y');
+        } while (chooseA == 'y');
     }
+
+    public static int check(String input){
+        if(input.matches("\\d+")){
+            int num = Integer.parseInt(input);
+            if(num < 0){
+                System.err.println("Negative Input By User");
+                return 0;
+            }
+            return 1;
+        }
+        return 0;
+    }
+
 }

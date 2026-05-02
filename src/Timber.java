@@ -597,7 +597,7 @@ public class Timber{
             current.Weight = Float.parseFloat(data[5]);
             current.Height = Float.parseFloat(data[6]);
             current.Status = data[7];
-//                current.date = LocalDate.parse(data[8]);
+            current.date = LocalDate.parse(data[8]);
 
             showFile(current, i);
             i++;

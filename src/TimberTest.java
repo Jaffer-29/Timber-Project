@@ -5,7 +5,7 @@ public class TimberTest {
 
         Scanner in = new Scanner(System.in);
         int choice;
-        char chooseA;
+        char chooseA = 'y';
 
         Timber timber = new Timber();
         timber.ReadFileOnly();
@@ -32,9 +32,10 @@ public class TimberTest {
             String inputChoice = in.next();
 
             if(check(inputChoice) == 0){
-                System.err.println("Input Error By User....");
-                System.err.println("Leaving System...");
-                return; 
+                System.err.println("Input Error By User. Unable to Process..");
+                System.err.println("Please try Again..");
+                System.err.println("\t________________________________\n\n");
+                continue; 
             }
 
             choice = Integer.parseInt(inputChoice);

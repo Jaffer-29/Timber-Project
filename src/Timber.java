@@ -271,6 +271,11 @@ public class Timber{
         searchId = in.nextInt();
         int flage = 0;
         Timber temp = first;
+        
+        if (temp == null) {
+            System.err.println("List Not Created Yet");
+            return;
+        }
 
         while (temp != null){
             if(temp.TimberID == searchId){
@@ -545,24 +550,30 @@ public class Timber{
         System.out.println("Writing in File");
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("TimberData.txt", true));
-        Timber temp = first;
+       
 
-        while(temp != null){
-            String line =   temp.TimberID + " | " +
-                    temp.Zone + " | " +
-                    temp.Kind + " | " +
-                    temp.Quantity + " | " +
-                    temp.Price + " | " +
-                    temp.Weight + " | " +
-                    temp.Height + " | " +
-                    temp.Status + " | " +
-                    temp.date;
+            String line =
+                    this.TimberID +
+                            " | " +
+                            this.Zone +
+                            " | " +
+                            this.Kind +
+                            " | " +
+                            this.Quantity +
+                            " | " +
+                            this.Price +
+                            " | " +
+                            this.Weight +
+                            " | " +
+                            this.Height +
+                            " | " +
+                            this.Status +
+                            " | " +
+                            this.date;
             writer.write(line);
             writer.newLine();
-            temp = temp.next;
-        }
-        writer.close();
-        System.out.println("Data written successfully");
+            writer.close();
+            System.out.println("Data written successfully");
     }
 
     public void ReadFile() throws Exception{
@@ -629,7 +640,7 @@ public class Timber{
             current.Weight = Float.parseFloat(data[5]);
             current.Height = Float.parseFloat(data[6]);
             current.Status = data[7];
-//                current.date = LocalDate.parse(data[8]);
+            current.date = LocalDate.parse(data[8]);
 
             if(first == null){
                 first = previous = current;
@@ -647,6 +658,11 @@ public class Timber{
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("TimberData.txt"));
         Timber temp = first;
+        if (temp == null) {
+            System.out.println("The List is not Created Yet");
+            System.out.println("Returning to System....");
+            return;
+        }
 
         while(temp != null){
             String line =   temp.TimberID + " | " +
